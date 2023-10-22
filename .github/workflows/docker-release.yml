@@ -4,6 +4,11 @@ on:
   schedule:
     # Set a schedule to check for changes, e.g., every day
     - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: environment
 
 jobs:
   build:

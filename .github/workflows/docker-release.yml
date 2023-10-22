@@ -8,7 +8,7 @@ on:
     inputs:
       environment:
         type: environment
-        default: Production
+        description: Select the environment
 
 jobs:
   build:

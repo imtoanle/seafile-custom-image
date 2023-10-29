@@ -6,9 +6,10 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
-      environment:
-        type: environment
-        description: Select the environment
+      version:
+        type: string
+        description: Input version
+        required: true
 
 jobs:
   build:
@@ -36,4 +37,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: aitbase/windmill-puppeteer:main
+          tags: aitbase/seafile:${{ github.event.inputs.version }}

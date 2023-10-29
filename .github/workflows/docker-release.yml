@@ -10,6 +10,9 @@ on:
         type: string
         description: Input version
         required: true
+      tag:
+        type: string
+        description: Input version
 
 jobs:
   build:
@@ -36,5 +39,7 @@ jobs:
       - name: Build and push server
         uses: docker/build-push-action@v5
         with:
+          build-args: |
+            "SEAFILE_VERSION=${{ github.event.inputs.version }}"
           push: true
-          tags: aitbase/seafile:${{ github.event.inputs.version }}
+          tags: aitbase/seafile:${{ github.event.inputs.tag || github.event.inputs.version }}
